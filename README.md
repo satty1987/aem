@@ -149,6 +149,20 @@ Adding fields (most common ones)
                 name="./active"
                 value="true"/>
                 
+          <!-- Interests -->  
+          <interests
+              jcr:primaryType="nt:unstructured"
+              sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+             fieldLabel="Interests">
+
+            <field
+             jcr:primaryType="nt:unstructured"
+             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+             name="./interests"
+            fieldLabel="Interest"/>
+        </interests>
+
+                
         </items>
 
     </content>
@@ -163,6 +177,7 @@ fullName = "John Doe"
 email    = "john@test.com"
 role     = "admin"
 active   = "true"
+interests = ["Cricket", "Music", "Coding"]
 
 ```
 
