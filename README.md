@@ -34,7 +34,8 @@ Adding fields (most common ones)
 ```
 
 ## Text area
-```<description
+```
+<description
     jcr:primaryType="nt:unstructured"
     sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
     fieldLabel="Description"
@@ -42,7 +43,8 @@ Adding fields (most common ones)
 ```
 
 ## Checkbox
-```<showTitle
+```
+<showTitle
     jcr:primaryType="nt:unstructured"
     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
     text="Show Title"
@@ -51,7 +53,8 @@ Adding fields (most common ones)
 ```
 
 ## Dropdown (Select)
-``` <type
+```
+<type
     jcr:primaryType="nt:unstructured"
     sling:resourceType="granite/ui/components/coral/foundation/form/select"
     fieldLabel="Type"
@@ -65,7 +68,8 @@ Adding fields (most common ones)
 ```
 
 ## Tabs layout (very common in real projects)
-```<content sling:resourceType="granite/ui/components/coral/foundation/tabs">
+```
+<content sling:resourceType="granite/ui/components/coral/foundation/tabs">
     <items>
         <basic jcr:primaryType="nt:unstructured" jcr:title="Basic">
             <items>
@@ -79,4 +83,5 @@ Adding fields (most common ones)
             </items>
         </advanced>
     </items>
-</content>```
+</content>
+```
