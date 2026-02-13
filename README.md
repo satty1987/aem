@@ -250,11 +250,14 @@ public class UserDetailsModel {
 }
 
 ```
-## Notes specific to your dialog
+## Notes Specific to Your Dialog
 
-### ./fullName, ./email, ./role, ./active map directly to simple properties.
-### The multifield stores multiple values under the same property name (./interests), so List<String> is the correct type.
-### Checkbox value will be "true" when checked. Sling automatically converts it to Boolean.
+- `./fullName`, `./email`, `./role`, `./active` map directly to simple properties on the component node.
+
+- The multifield stores multiple values under the same property name (`./interests`), so `List<String>` (or `String[]`) is the correct type in the Sling Model.
+
+- The checkbox stores the value `"true"` when checked. Sling automatically converts this to a `Boolean`. When unchecked, the property does not exist.
+
 
 ### 1. Property Storage
 - All fields use relative names (`./propertyName`), so values are stored directly on the component node.
