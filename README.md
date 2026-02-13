@@ -252,9 +252,68 @@ public class UserDetailsModel {
 ```
 ## Notes specific to your dialog
 
-./fullName, ./email, ./role, ./active map directly to simple properties.
-The multifield stores multiple values under the same property name (./interests), so List<String> is the correct type.
-Checkbox value will be "true" when checked. Sling automatically converts it to Boolean.
+### ./fullName, ./email, ./role, ./active map directly to simple properties.
+### The multifield stores multiple values under the same property name (./interests), so List<String> is the correct type.
+### Checkbox value will be "true" when checked. Sling automatically converts it to Boolean.
+
+### 1. Property Storage
+- All fields use relative names (`./propertyName`), so values are stored directly on the component node.
+- Example:
+  - `fullName` → `String`
+  - `email` → `String`
+  - `role` → `String`
+  - `active` → `Boolean`
+  - `interests` → multi-value `String[]`
+
+---
+
+### 2. Text Fields
+- `fullName` is marked as required in the dialog, but this is **author-side validation only**.
+- If backend validation is needed, it must be handled in the Sling Model or business logic.
+- `email` uses `type="email"` which provides basic client-side validation.
+
+---
+
+### 3. Select Field (Role)
+- The `role` dropdown stores only the `value` attribute (`admin`, `editor`, `viewer`).
+- The `text` attribute is for author UI display only and is not stored in JCR.
+- Always handle unexpected or missing values in your model or HTL.
+
+---
+
+### 4. Checkbox Field (Active)
+- When checked, the checkbox stores the string value `"true"`.
+- When unchecked, the property does **not exist** in JCR.
+- Using `Boolean` in the Sling Model is recommended to safely handle null values.
+
+---
+
+### 5. Multifield (Interests)
+- This is a **non-composite multifield**.
+- All values are stored under the same property name (`interests`) as a multi-value array.
+- In Sling Models, map this field as `List<String>` or `String[]`.
+- No child nodes are created for this multifield.
+
+---
+
+### 6. Default Injection Strategy
+- Using `DefaultInjectionStrategy.OPTIONAL` prevents model instantiation errors when fields are empty or not authored.
+- Always code defensively for null values in HTL or Java.
+
+---
+
+### 7. Recommended Best Practices
+- Add null checks in HTL using `data-sly-test` where needed.
+- Avoid business logic in HTL; keep it inside the Sling Model.
+- If the dialog grows in complexity (nested fields, objects), consider switching to a **composite multifield**.
+
+---
+
+### 8. Common Pitfalls
+- Expecting unchecked checkboxes to store `false` (they don’t).
+- Treating non-composite multifields as child nodes.
+- Relying solely on dialog `required` validation for backend logic.
+
 
 ## HTL usage example
 ```
