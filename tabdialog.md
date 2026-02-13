@@ -78,10 +78,14 @@
 
                             <interests
                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                fieldLabel="Interests">
+                                fieldLabel="Interests"
+                                name="./interests">
+                                <!-- ✅ Added name attribute -->
                                 <field
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    name="./interests"/>
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                name="./interest"/>
+                                <!-- Note: singular 'interest' is better practice -->
+                                </field>
                             </interests>
 
                         </items>
