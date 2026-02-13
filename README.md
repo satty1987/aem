@@ -23,3 +23,57 @@ Minimal example:
     </content>
 </jcr:root>
 ```
+Adding fields (most common ones)
+## Text field
+```
+<title
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+    fieldLabel="Title"
+    name="./title"/>
+```
+
+## Text area
+```<description
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+    fieldLabel="Description"
+    name="./description"/>```
+
+## Checkbox
+```<showTitle
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+    text="Show Title"
+    name="./showTitle"
+    value="true"/>```
+
+## Dropdown (Select)
+```<type
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+    fieldLabel="Type"
+    name="./type">
+
+    <items jcr:primaryType="nt:unstructured">
+        <one text="One" value="one"/>
+        <two text="Two" value="two"/>
+    </items>
+</type>```
+
+4. Tabs layout (very common in real projects)
+```<content sling:resourceType="granite/ui/components/coral/foundation/tabs">
+    <items>
+        <basic jcr:primaryType="nt:unstructured" jcr:title="Basic">
+            <items>
+                <!-- basic fields -->
+            </items>
+        </basic>
+
+        <advanced jcr:primaryType="nt:unstructured" jcr:title="Advanced">
+            <items>
+                <!-- advanced fields -->
+            </items>
+        </advanced>
+    </items>
+</content>```
