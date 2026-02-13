@@ -84,10 +84,15 @@ Adding fields (most common ones)
 ```
     <interests
         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-        fieldLabel="Interests">
+        fieldLabel="Interests"
+        name="./interests">
+
         <field
-            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-            name="./interests"/>
+        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+        name="./interest"/>
+        <!-- Note: singular 'interest' is better practice -->
+        </field>
+        
     </interests>
 ```
 
