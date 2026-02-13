@@ -67,6 +67,29 @@ Adding fields (most common ones)
 </type>
 ```
 
+### No, it's NOT mandatory for them to be the same. They serve different purposes:
+#### Understanding the Difference:
+```
+<newfield                          <!-- Node name: JCR structure only -->
+    jcr:primaryType="nt:unstructured"
+    name="./newField"/>            <!-- Property name: Where data is stored -->
+```
+# Dialog Field: Node Name vs Name Attribute
+
+## 1. Node Name (`<newfield>`)
+
+* **Purpose**: Organizes dialog structure in JCR repository
+* **Scope**: Only used internally in dialog XML
+* **Can be**: Any valid JCR node name
+* **Not visible**: To authors or in stored content
+
+## 2. name Attribute (`name="./newField"`)
+
+* **Purpose**: Defines where the value is stored in JCR
+* **Scope**: This is what gets saved to content
+* **Important**: This must match your Sling Model property
+* **Visible**: In content nodes and referenced in code
+
 ## Tabs layout (very common in real projects)
 ```
 <content sling:resourceType="granite/ui/components/coral/foundation/tabs">
