@@ -202,19 +202,18 @@ Adding fields (most common ones)
                 value="true"/>
                 
           <!-- Interests -->  
-          <interests
-              jcr:primaryType="nt:unstructured"
-              sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-             fieldLabel="Interests">
-
-            <field
-             jcr:primaryType="nt:unstructured"
-             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-             name="./interests"
-            fieldLabel="Interest"/>
-        </interests>
-
+            <interests
+                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                fieldLabel="Interests"
+                name="./interests">
                 
+                <field
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                name="./interest"/>
+                <!-- Note: singular 'interest' is better practice -->
+                </field>
+            </interests>
+
         </items>
 
     </content>
