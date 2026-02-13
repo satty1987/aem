@@ -1,3 +1,7 @@
+##Basic structure of a CQ dialog
+A dialog is a Granite UI form, built using JCR nodes.
+
+Minimal example:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root
