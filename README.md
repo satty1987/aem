@@ -85,3 +85,97 @@ Adding fields (most common ones)
     </items>
 </content>
 ```
+
+# Component structure
+```
+/apps/demo/components/user-card
+ ├── user-card.html
+ └── _cq_dialog
+     └── .content.xml
+
+```
+## Basic User Creation Dialog (.content.xml)
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="User Details"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <!-- Full Name -->
+            <fullName
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Full Name"
+                name="./fullName"
+                required="{Boolean}true"/>
+
+            <!-- Email -->
+            <email
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Email"
+                name="./email"
+                type="email"/>
+
+            <!-- Role -->
+            <role
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                fieldLabel="Role"
+                name="./role">
+
+                <items jcr:primaryType="nt:unstructured">
+                    <admin text="Admin" value="admin"/>
+                    <editor text="Editor" value="editor"/>
+                    <viewer text="Viewer" value="viewer"/>
+                </items>
+            </role>
+
+            <!-- Active -->
+            <active
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                text="Active User"
+                name="./active"
+                value="true"/>
+                
+        </items>
+
+    </content>
+</jcr:root>
+
+```
+
+## How data is saved in JCR
+When an author fills the dialog, data is stored on the component node:
+```
+fullName = "John Doe"
+email    = "john@test.com"
+role     = "admin"
+active   = "true"
+
+```
+
+## Display values in HTL (user-card.html)
+```
+<div class="user-card">
+    <h3>${properties.fullName}</h3>
+    <p>Email: ${properties.email}</p>
+    <p>Role: ${properties.role}</p>
+
+    <sly data-sly-test="${properties.active}">
+        <span class="status active">Active</span>
+    </sly>
+</div>
+
+```
