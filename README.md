@@ -91,8 +91,8 @@ Adding fields (most common ones)
     </interests>
 ```
 
-### No, it's NOT mandatory for them to be the same. They serve different purposes:
-#### Understanding the Difference:
+#### It's NOT mandatory for Node name and Property name to be the same. They serve different purposes:
+##### Understanding the Difference:
 ```
 <newfield                          <!-- Node name: JCR structure only -->
     jcr:primaryType="nt:unstructured"
