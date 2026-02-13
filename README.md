@@ -74,16 +74,16 @@ Adding fields (most common ones)
     jcr:primaryType="nt:unstructured"
     name="./newField"/>            <!-- Property name: Where data is stored -->
 ```
-# Dialog Field: Node Name vs Name Attribute
+### Dialog Field: Node Name vs Name Attribute
 
-## 1. Node Name (`<newfield>`)
+### 1. Node Name (`<newfield>`)
 
 * **Purpose**: Organizes dialog structure in JCR repository
 * **Scope**: Only used internally in dialog XML
 * **Can be**: Any valid JCR node name
 * **Not visible**: To authors or in stored content
 
-## 2. name Attribute (`name="./newField"`)
+### 2. name Attribute (`name="./newField"`)
 
 * **Purpose**: Defines where the value is stored in JCR
 * **Scope**: This is what gets saved to content
