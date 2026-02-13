@@ -194,3 +194,79 @@ interests = ["Cricket", "Music", "Coding"]
 </div>
 
 ```
+## Sling Model (Java)
+```
+package com.yourproject.core.models;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+@Model(
+    adaptables = Resource.class,
+    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
+)
+public class UserDetailsModel {
+
+    @ValueMapValue
+    private String fullName;
+
+    @ValueMapValue
+    private String email;
+
+    @ValueMapValue
+    private String role;
+
+    @ValueMapValue
+    private Boolean active;
+
+    @ValueMapValue
+    private List<String> interests;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public Boolean isActive() {
+        return active;
+    }
+
+    public List<String> getInterests() {
+        return interests;
+    }
+}
+
+```
+## Notes specific to your dialog
+
+./fullName, ./email, ./role, ./active map directly to simple properties.
+The multifield stores multiple values under the same property name (./interests), so List<String> is the correct type.
+Checkbox value will be "true" when checked. Sling automatically converts it to Boolean.
+
+## HTL usage example
+```
+<div data-sly-use.model="com.yourproject.core.models.UserDetailsModel">
+    <p>Name: ${model.fullName}</p>
+    <p>Email: ${model.email}</p>
+    <p>Role: ${model.role}</p>
+    <p>Active: ${model.active}</p>
+
+    <ul data-sly-list.interest="${model.interests}">
+        <li>${interest}</li>
+    </ul>
+</div>
+
+```
