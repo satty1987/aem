@@ -41,7 +41,21 @@ Adding fields (most common ones)
     fieldLabel="Description"
     name="./description"/>
 ```
-
+## Date Field
+```
+ <dob
+    sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+    fieldLabel="Date of Birth"
+    name="./dob"/>
+```
+## Image Field
+```
+<profileImage
+    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+    fieldLabel="Profile Image"
+    name="./profileImage"
+    rootPath="/content/dam"/>
+```
 ## Checkbox
 ```
 <showTitle
@@ -65,6 +79,16 @@ Adding fields (most common ones)
         <two text="Two" value="two"/>
     </items>
 </type>
+```
+## Multifield
+```
+    <interests
+        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+        fieldLabel="Interests">
+        <field
+            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+            name="./interests"/>
+    </interests>
 ```
 
 ### No, it's NOT mandatory for them to be the same. They serve different purposes:
